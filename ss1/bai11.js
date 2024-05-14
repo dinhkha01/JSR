@@ -1,32 +1,55 @@
-let gioHang = [
-  { id: 1, name: "bút", quantity: 2, price: 50000 },
-  { id: 2, name: "sách", quantity: 1, price: 150000 },
-  { id: 3, name: "vở", quantity: 2, price: 100000 },
-  { id: 4, name: "dép", quantity: 1, price: 1500000 },
+// Bài 11
+
+const products = [
+  { id: 1, name: "sp1", price: 100, stock: 100 },
+  { id: 2, name: "sp2", price: 90, stock: 100 },
+  { id: 3, name: "sp3", price: 150, stock: 100 },
 ];
 
-function thayDoiSoLuong(idSanPham, soLuongMoi, giahang) {
-  let sanPham = giahang.find((sp) => sp.id === idSanPham);
-  if (sanPham) {
-    sanPham.quantity = soLuongMoi;
+// lưu trữ sp và số lượng mua cartitem {pro: sản phẩm , quantity : soluongmua}
+const cart = [
+  { pro: { id: 1, name: "sp1", price: 100, quantity: 100 }, quantity: 1 },
+  { pro: { id: 2, name: "sp2", price: 90, quantity: 100 }, quantity: 15 }, // 20
+];
+
+// Hàm thay đổi số lượng có 3 tham số là id sản phẩm, số lượng mới và mảng sản phẩm, khi gọi hàm thì thay đổi số lượng của sản phẩm đó trong mảng.
+function changeQuantity(proId, newQuantity) {
+  // b1 kiểm tra sự tồn tại của sp trong giỏ hảng
+  let index = indexOfProductInCart(proId);
+  if (index != -1) {
+    // lưu lại số lượng cũ
+    let oldQuantity = cart[index].quantity;
+    // tìm thấy và có thẻ thay đổi số lượng
+    cart[index].quantity = newQuantity; // số lượng mới cần cập nhật
+    //  cập nhật lại số lương trong kho
+    let indexPro = indexOfProductInProducts(proId);
+    products[indexPro].stock =
+      products[indexPro].stock - newQuantity + oldQuantity;
   }
 }
-
-function xoaSanPham(idSanPham, giahang) {
-  let viTri = giahang.findIndex((sp) => sp.id === idSanPham);
-  if (viTri !== -1) {
-    giahang.splice(viTri, 1);
-  }
+function indexOfProductInCart(proId) {
+  // chuyển đổi [cartitem] thành [proid]
+  // let proIds = cart.map(cartItem=>cartItem.pro.id)
+  // return proIds.indexOf(proId)  // ko tìm thấy trả về -1
+  return cart.findIndex((cartItem) => cartItem.pro.id == proId); // vị trí đầu tiên mà nó tìm được
 }
-
-function tinhTongGia(giahang) {
-  return giahang.reduce((sum, sp) => sum + sp.price * sp.quantity, 0);
+function indexOfProductInProducts(proId) {
+  return products.findIndex((pro) => pro.id == proId); // vị trí đầu tiên mà nó tìm được
 }
+// tạo hàm lấy ra index của sản phẩm cần chỉnh sửa số lượng
+// Hàm xóa sản phẩm có 2 tham số là id sản phẩm và mảng sản phẩm, khi gọi hàm thì xóa sản phẩm đó trong mảng.
 
-thayDoiSoLuong(1, 3, gioHang);
-xoaSanPham(1, gioHang);
+// Hàm tính giá có tham số là mảng sản phẩm và kết quả trả về là tổng giá các sản phẩm trong mảng.
 
-let tongGia = tinhTongGia(gioHang);
+console.log(cart);
+changeQuantity(1, 50);
+changeQuantity(2, 30);
+console.log("new products", products);
+console.log("new cart", cart);
 
-console.log(gioHang);
-console.log(tongGia);
+// tính giá
+let total = cart.reduce(
+  (sum, cartItem) => sum + cartItem.pro.price * cartItem.quantity,
+  0
+);
+console.log(total);
