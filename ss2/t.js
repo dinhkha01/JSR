@@ -26,4 +26,3 @@ const products = [
   { id: 3, name: "sp3", price: 150, stock: 100 },
 ];
 console.log(products.sort((a, b) => a.price - b.price));
-///a
