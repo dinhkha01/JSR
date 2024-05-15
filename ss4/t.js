@@ -15,3 +15,9 @@ class studen{
 let S1= new studen(1, "kha", 20)
 console.log(S1);
 S1.prinInfo()
+
+
+
+/*
+
+*/

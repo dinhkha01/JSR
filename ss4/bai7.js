@@ -1,4 +1,4 @@
-class danhBa{
+class Contact{
     constructor(name,sdt,email){
         this.name=name;
         this.sdt=sdt;
@@ -6,14 +6,15 @@ class danhBa{
     }
 }
 
+
 let phoneBooks=[]
 
 function addContact(name, sdt, email){
 
-    const newContact= new danhBa(name, sdt, email)
+    const newContact= new Contact(name, sdt, email)
 
-    phoneBooks=[...phoneBooks, newContact]
-
+    phoneBooks=[...phoneBooks, newContact]// spread operator
+    // phoneBooks.push(newContact)
 }
 
 function displayContact(){
@@ -28,3 +29,5 @@ addContact("Huỳnh Trâm Anh", "0987654321", "tamanhde@vn.com");
 
 
 displayContact();
+
+
