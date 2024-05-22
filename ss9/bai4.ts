@@ -1,6 +1,6 @@
-function checkSuccessString(input: string): boolean {
+function check(input: string): boolean {
   return input === "success";
 }
 
-console.log(checkSuccessString("success"));
-console.log(checkSuccessString("failure"));
+console.log(check("success"));
+console.log(check("failure"));
