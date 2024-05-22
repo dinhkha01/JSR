@@ -8,6 +8,9 @@ class Employee {
     printInfo() {
         console.log(`${this.name} ${this.company} ${this.phone}`);
     }
+    getPhone() {
+        return this.phone;
+    }
 }
-let te = new Employee("Kha", "Hong", 999922);
+let te = new Employee("Kha", "Hong", "0999922");
 te.printInfo();
