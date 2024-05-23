@@ -1,6 +1,6 @@
 "use strict";
-function checkSuccessString(input) {
+function check(input) {
     return input === "success";
 }
-console.log(checkSuccessString("success"));
-console.log(checkSuccessString("failure"));
+console.log(check("success"));
+console.log(check("failure"));
