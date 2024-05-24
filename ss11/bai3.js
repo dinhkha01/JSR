@@ -5,19 +5,19 @@ class Person {
         this.name = _name;
     }
     displayInfo() {
-        console.log(`${this.name}`);
+        console.log(`ten: ${this.name}`);
     }
 }
 class Student extends Person {
-    constructor(_id) {
-        super("kha");
+    constructor(_name, _id) {
+        super(_name);
         this.id = _id;
     }
     displayInfo() {
         // chống ghi đè
         super.displayInfo();
-        console.log(`${this.id}`);
+        console.log(`id: ${this.id}`);
     }
 }
-let stu = new Student(1);
+let stu = new Student("kha", 1);
 stu.displayInfo();

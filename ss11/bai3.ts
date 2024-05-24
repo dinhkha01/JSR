@@ -5,22 +5,22 @@ class Person {
     this.name = _name;
   }
   displayInfo() {
-    console.log(`${this.name}`);
+    console.log(`ten: ${this.name}`);
   }
 }
 class Student extends Person {
   public id: number;
-  constructor(_id: number) {
-    super("kha");
+  constructor(_name: string, _id: number) {
+    super(_name);
     this.id = _id;
   }
   override displayInfo() {
     // chống ghi đè
     super.displayInfo();
 
-    console.log(`${this.id}`);
+    console.log(`id: ${this.id}`);
   }
 }
 
-let stu: Student = new Student(1);
+let stu: Student = new Student("kha", 1);
 stu.displayInfo();
