@@ -10,6 +10,9 @@ class Student {
     get _name() {
         return this.name;
     }
+    set _name(newName) {
+        this.name = newName;
+    }
 }
 class Classroom {
     constructor() {
@@ -18,9 +21,22 @@ class Classroom {
     addStudent(student) {
         this.students.push(student);
     }
+    removeStudent(studentId) {
+        const index = this.students.findIndex(student => student._id === studentId);
+        if (index !== -1) {
+            const removedStudent = this.students.splice(index, 1)[0];
+            allStudents.push(removedStudent);
+        }
+    }
+    editStudent(studentId, newName) {
+        const student = this.students.find(student => student._id === studentId);
+        if (student) {
+            student._name = newName;
+        }
+    }
     showStudents() {
-        this.students.forEach((students) => {
-            console.log(`id: ${students._id} name: ${students._name}`);
+        this.students.forEach(student => {
+            console.log(`id: ${student._id} name: ${student._name}`);
         });
     }
 }
@@ -46,3 +62,19 @@ console.log("lop 1: ");
 class1.showStudents();
 console.log("lop 2: ");
 class2.showStudents();
+console.log("Removing student with id 2 from class1 and adding to allStudents");
+class1.removeStudent(2);
+console.log("lop 1: ");
+class1.showStudents();
+console.log("lop 2: ");
+class2.showStudents();
+console.log("All students: ");
+allStudents.forEach(student => console.log(`id: ${student._id} name: ${student._name}`));
+console.log("Editing student with id 4 in class2 to new name 'newName'");
+class2.editStudent(4, "newName");
+console.log("lop 1: ");
+class1.showStudents();
+console.log("lop 2: ");
+class2.showStudents();
+console.log("All students: ");
+allStudents.forEach(student => console.log(`id: ${student._id} name: ${student._name}`));
