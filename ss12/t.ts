@@ -25,7 +25,6 @@ class Square implements Ishape {
   tinhDienTich = () => {
     return this.canh * this.canh;
   };
-  get = () => {};
 }
 let square: Square = new Square(10);
 console.log(square.tinhChuVi());

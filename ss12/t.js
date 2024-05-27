@@ -14,7 +14,6 @@ class Square {
         this.tinhDienTich = () => {
             return this.canh * this.canh;
         };
-        this.get = () => { };
         this.canh = _canh;
     }
 }
