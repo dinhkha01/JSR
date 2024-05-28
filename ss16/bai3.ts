@@ -1,4 +1,5 @@
 // Khai báo biến weekDays kiểu enum chứa giá trị là các ngày trong tuần.Tiến hành in tất cả các ngày trong tuần trong biến đã khai báo.
+
 enum WeekDayss1 {
   Sunday = "Chủ Nhật",
   Monday = "Thứ hai",
