@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Hàm decorator factory
+// Hàm decorator factory function
 function validateArguments(validationRules) {
     return function (target, propertyKey, descriptor) {
         const originalMethod = descriptor.value;
         descriptor.value = function (...args) {
             for (let i = 0; i < args.length; i++) {
-                if (!validationRules) {
+                const rule = validationRules[i];
+                if (!rule || !rule(args[i])) {
                     throw new Error(`Argument at position ${i} does not meet validation criteria.`);
                 }
             }
@@ -42,7 +43,7 @@ __decorate([
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", void 0)
 ], Example.prototype, "processInput", null);
-const example = new Example();
-example.processInput(1, "John");
-example.processInput(-1, "Alice");
-example.processInput(2, "");
+const example1 = new Example();
+example1.processInput(1, "John"); // Output: Processing input: ID=1, Name=John
+example1.processInput(-1, "Alice"); // Throws an error: Argument at position 0 does not meet validation criteria.
+example1.processInput(2, ""); // Throws an error: Argument at position 1 does not meet validation criteria.
