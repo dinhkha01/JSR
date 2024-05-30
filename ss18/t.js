@@ -47,6 +47,22 @@ function pow(value) {
         };
     };
 }
+// function x2(target: any, propertyKey: string) {
+//   console.log("target", target);
+//   console.log("propertyKey", propertyKey);
+//   Object.defineProperty(target, propertyKey, {
+//     configurable: false,
+//     get() {
+//       //lấy giá trị obj .id
+//       return this[propertyKey] * 2;
+//     },
+//     set(value) {
+//       // gán obj.id
+//       this[propertyKey] = value * 2;
+//     },
+//   });
+//   //Reflection: kĩ thuật can thiệp trực tiếp vào đối tượng thông qua tên
+// }
 let student = class student {
     constructor(id, name) {
         this.id = id;
@@ -55,7 +71,24 @@ let student = class student {
     geet() {
         return `helo ${this.name}`;
     }
+    luythua() {
+        return 5;
+    }
+    get id1() {
+        return this.id;
+    }
 };
+__decorate([
+    pow(2),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], student.prototype, "luythua", null);
+__decorate([
+    x3,
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], student.prototype, "id1", null);
 student = __decorate([
     Logger,
     __metadata("design:paramtypes", [Number, String])
@@ -63,3 +96,12 @@ student = __decorate([
 let stud = new student(1, "hi");
 console.log(stud);
 console.log(stud.geet());
+console.log(stud.luythua());
+function x3(target, propertyName, descriptor) {
+    let old = descriptor.value;
+    descriptor.get = () => {
+        // return old() * 3;
+        return 100;
+    };
+}
+console.log(stud.id1);
