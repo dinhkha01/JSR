@@ -30,8 +30,8 @@ class Lion extends Animal {
     }
 }
 // Hàm generic createInstance
-function createInstance(c) {
-    return new c();
+function createInstance(c, ...args) {
+    return new c(...args);
 }
 // Decorator để ghi nhận hoạt động
 function logCreation(target, key, descriptor) {
@@ -43,15 +43,10 @@ function logCreation(target, key, descriptor) {
     };
 }
 // Áp dụng decorator logCreation cho hàm createInstance
-Object.defineProperty(window, 'createInstance', {
-    value: createInstance,
-    writable: true,
-    configurable: true
-});
 logCreation(window, 'createInstance', Object.getOwnPropertyDescriptor(window, 'createInstance'));
 // Tạo mới các đối tượng sử dụng hàm createInstance
 const bee = createInstance(Bee);
 const lion = createInstance(Lion);
-const beeKeeper = createInstance(BeeKeeper);
-const zooKeeper = createInstance(ZooKeeper);
+const beeKeeper = createInstance(BeeKeeper, true); // Giả sử có mặt nạ
+const zooKeeper = createInstance(ZooKeeper, "John"); // Giả sử tên của ZooKeeper là "John"
 // Console sẽ ghi: Tạo mới đối tượng: Bee, Lion, BeeKeeper, ZooKeeper
