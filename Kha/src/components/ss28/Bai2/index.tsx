@@ -18,6 +18,7 @@ export default class Bai2 extends Component<{}, StateType> {
   render() {
     return (
       <div>
+        Bài 2:
         <h3>{this.state.name}</h3>
         <h3>{this.state.id}</h3>
         <h3>{this.state.date}</h3>

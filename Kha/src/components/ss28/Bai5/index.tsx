@@ -27,6 +27,7 @@ export default class extends Component<{}, StateType> {
   render() {
     return (
       <div>
+        Bài 5:
         <Conpro pro={this.state.product} />
       </div>
     );

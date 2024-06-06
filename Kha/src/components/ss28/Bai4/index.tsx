@@ -15,6 +15,7 @@ export default class Bai4 extends Component<{}, StateType> {
   render() {
     return (
       <div>
+        Bài 4:
         <Con1 name={this.state.name} />
       </div>
     );

@@ -27,6 +27,7 @@ export default class Bai6 extends Component<{}, StateType> {
   render() {
     return (
       <div>
+        Bài 6:
         <Concuano userr={this.state.user} />
       </div>
     );

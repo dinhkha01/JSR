@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-type ProType = {
-  props: string;
-};
 
 type Name = {
   name: string;
 };
 
-export default class Bai1 extends Component<ProType, Name> {
-  constructor(props: ProType) {
+export default class Bai1 extends Component<{}, Name> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       name: "Nguyễn Đình Kha",
@@ -17,6 +14,7 @@ export default class Bai1 extends Component<ProType, Name> {
   render() {
     return (
       <div>
+        Bài 1:
         <h3>{this.state.name}</h3>
       </div>
     );

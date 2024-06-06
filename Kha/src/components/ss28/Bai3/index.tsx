@@ -24,6 +24,7 @@ export default class Bai3 extends Component<{}, StateType> {
   render() {
     return (
       <div>
+        Bài 3:
         <Stu1 list={this.state.user} />
       </div>
     );
