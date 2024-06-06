@@ -24,6 +24,7 @@ export default class Bai2 extends Component {
   render() {
     return (
       <div>
+        <h5>Bài 2:</h5>
         <h3>Danh sách kết quả</h3>
         <ul>
           <li>{this.sum(3, 2)} </li>
