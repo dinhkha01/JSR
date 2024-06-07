@@ -18,10 +18,9 @@ export default class Bai2 extends Component<{}, StateType> {
   }
   changeInput(e: React.ChangeEvent<HTMLInputElement>) {
     let value = e.target.value;
-    let name = e.target.name;
+
     this.setState({
-      ...this.state,
-      [name]: value,
+      out: value,
     });
   }
 
@@ -33,10 +32,10 @@ export default class Bai2 extends Component<{}, StateType> {
         <input
           type="text"
           value={this.state.out}
-          name="out"
-          onChange={(e) => {
-            this.changeInput(e);
-          }}
+          // onChange={(e) => {
+          //   this.changeInput(e);
+          // }}
+          onChange={this.changeInput}
         />
       </div>
     );
