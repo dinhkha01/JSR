@@ -12,10 +12,8 @@ export default class Bai3 extends Component<{}, StateType> {
   }
   InputDate(e: React.ChangeEvent<HTMLInputElement>) {
     let value = e.target.value;
-    let name = e.target.name;
     this.setState({
-      ...this.state,
-      [name]: value,
+      date: value,
     });
   }
   render() {
