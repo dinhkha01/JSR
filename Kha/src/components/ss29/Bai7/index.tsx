@@ -1,7 +1,7 @@
 import React, { ChangeEvent, Component } from "react";
 
 type StateType = {
-  arr: number[];
+  arr: string[];
   inputValue: string;
 };
 
@@ -23,16 +23,11 @@ export default class Bai7 extends Component<{}, StateType> {
   };
 
   handleSave = () => {
-    const { inputValue, arr } = this.state;
-    const value = parseFloat(inputValue);
-    if (!isNaN(value)) {
-      this.setState({
-        arr: [...arr, value],
-        inputValue: "",
-      });
-    }
+    this.setState({
+      arr: [...this.state.arr, this.state.inputValue],
+      inputValue: "",
+    });
   };
-
   render() {
     return (
       <div>
