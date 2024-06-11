@@ -1,41 +1,47 @@
 import React, { ChangeEvent, Component } from "react";
 type StateType = {
-  color: string;
-  submitColor: string;
+  email: string;
+  submitEmail: string;
 };
-export default class Bai2 extends Component<{}, StateType> {
+export default class Bai1ss31 extends Component<{}, StateType> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      color: "",
-      submitColor: "",
+      email: "",
+      submitEmail: "",
     };
   }
   in = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     this.setState({
-      color: value,
+      email: value,
     });
   };
   out = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.setState({
-      submitColor: this.state.color,
+      submitEmail: this.state.email,
+      email: "",
     });
   };
+
   render() {
     return (
       <div>
         <form onSubmit={this.out}>
-          <h3>{this.state.submitColor}</h3>
           <input
             type="text"
-            name="color"
-            value={this.state.color}
+            name="email"
+            value={this.state.email}
             onChange={this.in}
           />
-          <div style={{ backgroundColor: this.state.submitColor }}>he</div>
-          <button type="submit">submit</button>
+          <button type="submit">Submit</button>
+          <p>{this.state.submitEmail}</p>
+          {/* {this.state.submitEmail && (
+            <>
+              <p>gmail: {this.state.submitEmail}</p>
+            </>
+          )} */}
         </form>
       </div>
     );
