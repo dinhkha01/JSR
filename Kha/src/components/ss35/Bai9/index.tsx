@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Bai9() {
-  return <div></div>;
+  return (
+    <div>
+      <input type="radius" />
+    </div>
+  );
 }

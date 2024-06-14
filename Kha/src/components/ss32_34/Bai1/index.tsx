@@ -1,15 +1,15 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { Alert } from "react-bootstrap";
 import { ChangeEvent, FormEvent, useState } from "react";
+
 type Todo = {
   id: number;
   title: string;
   statu: boolean;
 };
+
 const colors = [
   "primary",
   "secondary",
@@ -35,9 +35,17 @@ export default function Bai1() {
       statu: false,
     },
   ]);
+  const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
+  const [editTitle, setEditTitle] = useState<string>("");
+
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
+
+  const changeEditInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditTitle(e.target.value);
+  };
+
   const pushTodo = (e: FormEvent) => {
     e.preventDefault();
     const newTodo: Todo = {
@@ -48,6 +56,29 @@ export default function Bai1() {
     setData([...data, newTodo]);
     setTitle("");
   };
+
+  const startEditing = (todo: Todo) => {
+    setEditingTodo(todo);
+    setEditTitle(todo.title);
+  };
+
+  const cancelEditing = () => {
+    setEditingTodo(null);
+    setEditTitle("");
+  };
+
+  const saveEdit = (e: FormEvent) => {
+    e.preventDefault();
+    if (editingTodo) {
+      const updatedTodos = data.map((item) =>
+        item.id === editingTodo.id ? { ...item, title: editTitle } : item
+      );
+      setData(updatedTodos);
+      setEditingTodo(null);
+      setEditTitle("");
+    }
+  };
+
   const Delete = (id: number) => {
     if (window.confirm("may muon xao ?????")) {
       const updateDelete = data.filter((item) => item.id !== id);
@@ -59,30 +90,50 @@ export default function Bai1() {
     <div>
       <div>
         <h3>Danh sách công việc</h3>
-        <Form>
-          <input type="text" value={title} onChange={(e) => changeInput(e)} />
-          <Button type="submit" onClick={pushTodo}>
-            Submit
-          </Button>
+        <Form onSubmit={pushTodo}>
+          <input type="text" value={title} onChange={changeInput} />
+          <Button type="submit">Submit</Button>
         </Form>
         {data.map((todo) => {
           let color = Math.floor(Math.random() * 8);
-
           return (
             <Alert variant={colors[color]} key={todo.id}>
-              <div className=" d-flex justify-content-between">
-                <div className=" d-flex justify-content-between">
+              <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between">
                   <Form.Group className="mb-3" id="formGridCheckbox">
                     <Form.Check type="checkbox" defaultChecked={todo.statu} />
                   </Form.Group>
-                  <p
-                    className={todo.statu ? "text-decoration-line-through" : ""}
-                  >
-                    {todo.title}
-                  </p>
+                  {editingTodo?.id === todo.id ? (
+                    <Form onSubmit={saveEdit}>
+                      <Form.Control
+                        type="text"
+                        value={editTitle}
+                        onChange={changeEditInput}
+                      />
+                      <Button variant="outline-success" type="submit">
+                        Save
+                      </Button>
+                      <Button variant="outline-danger" onClick={cancelEditing}>
+                        Cancel
+                      </Button>
+                    </Form>
+                  ) : (
+                    <p
+                      className={
+                        todo.statu ? "text-decoration-line-through" : ""
+                      }
+                    >
+                      {todo.title}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <Button variant="outline-info">Sửa</Button>
+                  <Button
+                    variant="outline-info"
+                    onClick={() => startEditing(todo)}
+                  >
+                    Sửa
+                  </Button>
                   <Button
                     variant="outline-light"
                     onClick={() => Delete(todo.id)}
