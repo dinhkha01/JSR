@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Bai1 />
-      <Bai9 />
+      {/* <Bai9/> */}
     </>
   );
 }

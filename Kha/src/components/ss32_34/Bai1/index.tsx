@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 import { Alert } from "react-bootstrap";
 import { ChangeEvent, FormEvent, useState } from "react";
 
@@ -79,6 +78,13 @@ export default function Bai1() {
     }
   };
 
+  const changeStatus = (id: number) => {
+    const updatedTodos = data.map((item) =>
+      item.id === id ? { ...item, statu: !item.statu } : item
+    );
+    setData(updatedTodos);
+  };
+
   const Delete = (id: number) => {
     if (window.confirm("may muon xao ?????")) {
       const updateDelete = data.filter((item) => item.id !== id);
@@ -101,7 +107,11 @@ export default function Bai1() {
               <div className="d-flex justify-content-between">
                 <div className="d-flex justify-content-between">
                   <Form.Group className="mb-3" id="formGridCheckbox">
-                    <Form.Check type="checkbox" defaultChecked={todo.statu} />
+                    <Form.Check
+                      type="checkbox"
+                      checked={todo.statu}
+                      onChange={() => changeStatus(todo.id)}
+                    />
                   </Form.Group>
                   {editingTodo?.id === todo.id ? (
                     <Form onSubmit={saveEdit}>
