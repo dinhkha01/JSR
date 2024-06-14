@@ -4,8 +4,8 @@ import Bai9 from "./components/ss35/Bai9";
 function App() {
   return (
     <>
-      <Bai1 />
-      {/* <Bai9/> */}
+      {/* <Bai1 /> */}
+      <Bai9 />
     </>
   );
 }
