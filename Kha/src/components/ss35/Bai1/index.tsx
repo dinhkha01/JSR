@@ -14,4 +14,4 @@ export default function Bai1() {
 }
 /// effect(()=>{})/// hoạt động khi render hoặc render lại
 /// effect(()=>{}[])/// mảng rỗng ko phụ thuộc chỉ chạy 1 lần
-/// effect(()=>{}[name])/// mảng rỗng phụ thuộc, hoạt động khi biến truyền vào thay đổi
+/// effect(()=>{}[name])/// mảng  phụ thuộc, hoạt động khi biến truyền vào thay đổi
