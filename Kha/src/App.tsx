@@ -1,17 +1,18 @@
-import Bai1 from "./components/ss36/Bai1";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Bai9 from "./components/ss35/Bai9";
-import Bai10 from "./components/ss35/Bai10";
-import Bai11 from "./components/ss35/Bai11";
-import Testne from "./components/ss35/Testne";
-import Btth from "./components/ss35/Btth";
-import Bai2 from "./components/ss36/Bai2";
+import { ThemeContext } from "./components/ss37/Bai1_4/ThemeContext";
+import Button from "./components/ss37/Bai1_4/Button";
+import Bai5 from "./components/ss37/Bai5";
+
 function App() {
   return (
     <>
-      {/* <Btth /> */}
-      <Bai1 />
-      <Bai2 />
+      <ThemeContext.Provider value="pink">
+        <Button />
+      </ThemeContext.Provider>
+      <ThemeContext.Provider value="red">
+        <Button />
+      </ThemeContext.Provider>
+      <Bai5 />
     </>
   );
 }
