@@ -1,49 +1,41 @@
 import React, { useState } from "react";
 
 const Bai3 = () => {
-  const [tt, setTt] = useState("");
-  const [sp, setSp] = useState("");
-  const [gt, setGt] = useState("");
-  const [lh, setLh] = useState("");
+  const [color, setColor] = useState("tt");
 
-  const ttc = () => {
-    setTt("gray");
-    setSp("");
-    setGt("");
-    setLh("");
+  const handleClick = (section: string) => {
+    setColor(section);
   };
-  const spc = () => {
-    setTt("");
-    setSp("gray");
-    setGt("");
-    setLh("");
-  };
-  const gtc = () => {
-    setTt("");
-    setSp("");
-    setGt("gray");
-    setLh("");
-  };
-  const lhc = () => {
-    setTt("");
-    setSp("");
-    setGt("");
-    setLh("gray");
+
+  const getBackgroundColor = (section: string) => {
+    return color === section ? "gray" : "";
   };
 
   return (
     <div>
       <div className="d-flex ">
-        <p style={{ margin: 10, backgroundColor: tt }} onClick={ttc}>
+        <p
+          style={{ margin: 10, backgroundColor: getBackgroundColor("tt") }}
+          onClick={() => handleClick("tt")}
+        >
           Trang chu
         </p>
-        <p style={{ margin: 10, backgroundColor: sp }} onClick={spc}>
+        <p
+          style={{ margin: 10, backgroundColor: getBackgroundColor("sp") }}
+          onClick={() => handleClick("sp")}
+        >
           San pham
         </p>
-        <p style={{ margin: 10, backgroundColor: gt }} onClick={gtc}>
+        <p
+          style={{ margin: 10, backgroundColor: getBackgroundColor("gt") }}
+          onClick={() => handleClick("gt")}
+        >
           Gioi thieu
         </p>
-        <p style={{ margin: 10, backgroundColor: lh }} onClick={lhc}>
+        <p
+          style={{ margin: 10, backgroundColor: getBackgroundColor("lh") }}
+          onClick={() => handleClick("lh")}
+        >
           Lien he
         </p>
       </div>
