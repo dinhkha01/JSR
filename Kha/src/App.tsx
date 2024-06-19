@@ -8,6 +8,7 @@ import Bai8 from "./components/ss37/Bai8";
 import Bai3 from "./components/ss36/Bai3";
 import Bai4 from "./components/ss36/Bai4";
 import Bai10 from "./components/ss36/Bai10";
+import Bai11 from "./components/ss36/Bai11";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Bai5 />
       <Bai6 /> */}
       <Bai10 />
+      <Bai11 />
     </>
   );
 }
