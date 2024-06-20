@@ -1,0 +1,158 @@
+.navbarMid {
+  display: flex;
+  padding: 10px;
+}
+.navbarMid a {
+  width: 10rem;
+}
+.logo {
+  font-size: 30px;
+  padding: 0px 120px;
+}
+.top {
+  background-color: black;
+  color: whitesmoke;
+  justify-content: flex-end;
+}
+.topCon {
+  width: 1090px;
+  margin: 10px;
+}
+.topChu {
+  padding: 0px 20px;
+}
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+input {
+  border: none;
+}
+.form {
+  width: 30%;
+}
+.nut {
+  border-radius: 10px;
+  background-color: palevioletred;
+  border: none;
+  width: 80px;
+  height: 40px;
+}
+footer {
+  color: whitesmoke;
+  background-color: #111;
+  margin: 60px 0px;
+}
+.o {
+  background-color: #111;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+}
+body {
+  background-color: #ccc;
+}
+.containerF {
+  padding: 50px;
+}
+.custom-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  padding: 2px; /* Further reduce padding */
+  background-color: black;
+  max-width: 250px; /* Further reduce max-width */
+}
+
+.custom-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: whitesmoke;
+  padding: 4px; /* Further reduce padding */
+}
+
+.custom-input::placeholder {
+  color: #8c8c8c;
+}
+
+.custom-input-icon {
+  display: flex;
+  align-items: center;
+}
+
+.custom-input-icon svg {
+  width: 18px; /* Further reduce width */
+  height: 18px; /* Further reduce height */
+  stroke: #ffffff;
+}
+.Fbot {
+  text-align: center;
+}
+
+.app-download {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.app-download h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.app-download p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.qr-and-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.qr-code {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.download-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.download-link {
+  margin-bottom: 10px;
+}
+
+.store-badge {
+  width: 150px;
+  height: auto;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-link {
+  margin: 0 10px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+}
+.nhap {
+  background-color: #ccc;
+  border: none;
+}
