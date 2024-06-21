@@ -6,6 +6,7 @@ export const data = [
     email: "nvana@gmail.com",
     address: "Ba Đình, Hà Nội",
     status: true,
+    block: true,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const data = [
     email: "ttb@gmail.com",
     address: "Cầu Giấy, Hà Nội",
     status: false,
+    block: true,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const data = [
     email: "lvc@gmail.com",
     address: "Hai Bà Trưng, Hà Nội",
     status: true,
+    block: true,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export const data = [
     email: "ptd@gmail.com",
     address: "Hoàn Kiếm, Hà Nội",
     status: false,
+    block: true,
   },
   {
     id: 5,
@@ -38,5 +42,6 @@ export const data = [
     email: "nve@gmail.com",
     address: "Cầu Giấy, Hà Nội",
     status: true,
+    block: true,
   },
 ];
