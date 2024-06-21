@@ -161,7 +161,7 @@ const Btne = () => {
               <div className="social-icons">
                 <a href="#" className="social-link">
                   <img
-                    src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-1/286791746_715126952939349_2863510425811172870_n.jpg?stp=dst-jpg_p480x480&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0fIAU9QmglIQ7kNvgH_W5kp&_nc_ht=scontent.fsgn2-9.fna&oh=00_AYCuJ6NK2I7qMp1NiTmdteSAjYtHCPwoBJE9Mua-j9qhHw&oe=66797D68"
+                    src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-1/286791746_715126952939349_2863510425811172870_n.jpg?stp=dst-jpg_p480x480&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0fIAU9QmglIQ7kNvgF-Jvo0&_nc_ht=scontent.fsgn2-9.fna&oh=00_AYA4Hmxwcz7Vny4H13oQL-QGpBpLxnK8OP7QckmXW18EPQ&oe=667A96A8"
                     alt="Facebook"
                     className="social-icon"
                   />
