@@ -2,9 +2,20 @@ import React, { FormEvent, useState } from "react";
 import "./index.css";
 import { data as initialData } from "./data";
 
+interface User {
+  id: number | null;
+  name: string;
+  dob: string;
+  email: string;
+  address: string;
+  status: boolean;
+  block: boolean;
+}
+
 const BT = () => {
-  const [data, setData] = useState(initialData);
-  const [user, setUser] = useState({
+  const [data, setData] = useState<User[]>(initialData);
+  const [user, setUser] = useState<User>({
+    id: null,
     name: "",
     dob: "",
     email: "",
@@ -14,13 +25,26 @@ const BT = () => {
   });
 
   const [showForm, setShowForm] = useState(true);
-  const [showBlock, setShowBlock] = useState(true);
+  const [showBlock, setShowBlock] = useState(false);
   const [showDelete, setShowDelete] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+  const [userToBlock, setUserToBlock] = useState<number | null>(null);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
 
   const handleAddNewEmployee = () => {
+    setIsEditing(false);
+    setUser({
+      id: null,
+      name: "",
+      dob: "",
+      email: "",
+      address: "",
+      status: false,
+      block: true,
+    });
     setShowForm(!showForm);
   };
+
   const handleForm = (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target as HTMLInputElement;
     setUser({
@@ -31,8 +55,13 @@ const BT = () => {
 
   const submitForm = (e: FormEvent) => {
     e.preventDefault();
-    setData([...data, { ...user, id: data.length + 1 }]);
+    if (isEditing) {
+      setData(data.map((item) => (item.id === user.id ? { ...user } : item)));
+    } else {
+      setData([...data, { ...user, id: data.length + 1 }]);
+    }
     setUser({
+      id: null,
       name: "",
       dob: "",
       email: "",
@@ -42,21 +71,48 @@ const BT = () => {
     });
     setShowForm(true);
   };
+
+  const handleEdit = (id: number | null) => {
+    const selectedUser = data.find((user) => user.id === id);
+    if (selectedUser) {
+      setUser(selectedUser);
+      setIsEditing(true);
+      setShowForm(false);
+    }
+  };
+
   const ShowBlock = () => {
     setShowBlock(!showBlock);
   };
+
   const ShowDelete = () => {
     setShowDelete(!showDelete);
   };
-  const toggleDelete = (id: number) => {
+
+  const toggleBlock = (id: number | null) => {
+    setUserToBlock(id);
+    setShowBlock(!showBlock);
+  };
+
+  const confirmBlock = () => {
+    setData(
+      data.map((user) =>
+        user.id === userToBlock ? { ...user, block: !user.block } : user
+      )
+    );
+    setShowBlock(!showBlock);
+  };
+
+  const toggleDelete = (id: number | null) => {
     setUserToDelete(id);
     setShowDelete(!showDelete);
   };
 
   const deleteUser = () => {
     setData(data.filter((user) => user.id !== userToDelete));
-    setShowDelete(!showDelete);
+    setShowDelete(true);
   };
+
   return (
     <div>
       <div>
@@ -90,7 +146,7 @@ const BT = () => {
                   <th>Email</th>
                   <th>Địa chỉ</th>
                   <th>Trạng thái</th>
-                  <th colSpan={2}>Chức năng</th>
+                  <th colSpan={3}>Chức năng</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,12 +175,20 @@ const BT = () => {
                       </div>
                     </td>
                     <td>
-                      <span className="button button-block" onClick={ShowBlock}>
+                      <span
+                        className="button button-block"
+                        onClick={() => toggleBlock(user.id)}
+                      >
                         {user.block ? "Chan" : "Ko Chan"}
                       </span>
                     </td>
                     <td>
-                      <span className="button button-edit">Sửa</span>
+                      <span
+                        className="button button-edit"
+                        onClick={() => handleEdit(user.id)}
+                      >
+                        Sửa
+                      </span>
                     </td>
                     <td>
                       <span
@@ -140,7 +204,7 @@ const BT = () => {
             </table>
             <footer className="d-flex justify-content-end align-items-center gap-3">
               <select className="form-select">
-                <option selected>Hiển thị 10 bản ghi trên trang</option>
+                <option>Hiển thị 10 bản ghi trên trang</option>
                 <option>Hiển thị 20 bản ghi trên trang</option>
                 <option>Hiển thị 50 bản ghi trên trang</option>
                 <option>Hiển thị 100 bản ghi trên trang</option>
@@ -180,7 +244,9 @@ const BT = () => {
         <div className="overlay" hidden={showForm}>
           <form className="form" onSubmit={submitForm}>
             <div className="d-flex justify-content-between align-items-center">
-              <h4>Chỉnh sửa nhân viên</h4>
+              <h4>
+                {isEditing ? "Chỉnh sửa nhân viên" : "Thêm mới nhân viên"}
+              </h4>
               <i className="fa-solid fa-xmark" onClick={handleAddNewEmployee} />
             </div>
             <div>
@@ -193,6 +259,7 @@ const BT = () => {
                 className="form-control "
                 onChange={handleForm}
                 name="name"
+                value={user.name}
               />
             </div>
             <div>
@@ -205,6 +272,7 @@ const BT = () => {
                 className="form-control "
                 onChange={handleForm}
                 name="dob"
+                value={user.dob}
               />
             </div>
             <div>
@@ -217,6 +285,7 @@ const BT = () => {
                 className="form-control email"
                 onChange={handleForm}
                 name="email"
+                value={user.email}
               />
             </div>
             <div>
@@ -228,12 +297,14 @@ const BT = () => {
                 name="address"
                 id="address"
                 rows={3}
-                defaultValue={""}
                 onChange={handleForm}
+                value={user.address}
               />
             </div>
             <div>
-              <button className="w-100 btn btn-primary">Thêm mới</button>
+              <button className="w-100 btn btn-primary">
+                {isEditing ? "Cập nhật" : "Thêm mới"}
+              </button>
             </div>
           </form>
         </div>
@@ -252,7 +323,9 @@ const BT = () => {
               <button className="btn btn-light" onClick={ShowBlock}>
                 Hủy
               </button>
-              <button className="btn btn-danger">Xác nhận</button>
+              <button className="btn btn-danger" onClick={confirmBlock}>
+                Xác nhận
+              </button>
             </div>
           </div>
         </div>
@@ -270,7 +343,7 @@ const BT = () => {
               <button className="btn btn-light" onClick={ShowDelete}>
                 Hủy
               </button>
-              <button className="btn btn-danger" onClick={() => deleteUser()}>
+              <button className="btn btn-danger" onClick={deleteUser}>
                 Xác nhận
               </button>
             </div>
