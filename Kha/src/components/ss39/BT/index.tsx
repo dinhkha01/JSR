@@ -30,6 +30,7 @@ const BT = () => {
   const [isEditing, setIsEditing] = useState(true);
   const [userToBlock, setUserToBlock] = useState<number | null>(null);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddNewEmployee = () => {
     setIsEditing(false);
@@ -112,6 +113,17 @@ const BT = () => {
     setData(data.filter((user) => user.id !== userToDelete));
     setShowDelete(true);
   };
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Filter the data based on the search query
+  const filteredData = data.filter((user) =>
+    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const rf = () => {
+    setSearchQuery("");
+  };
 
   return (
     <div>
@@ -133,8 +145,14 @@ const BT = () => {
                 type="text"
                 className="form-control"
                 placeholder="Tìm kiếm theo email"
+                value={searchQuery}
+                onChange={handleSearch}
               />
-              <i className="fa-solid fa-arrows-rotate" title="Refresh" />
+              <i
+                className="fa-solid fa-arrows-rotate"
+                title="Refresh"
+                onClick={rf}
+              />
             </div>
             {/* Danh sách nhân viên */}
             <table className="table table-bordered table-hover table-striped">
@@ -150,7 +168,7 @@ const BT = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((user, index) => (
+                {filteredData.map((user, index) => (
                   <tr key={user.id}>
                     <td>{index + 1}</td>
                     <td>{user.name}</td>
@@ -281,7 +299,7 @@ const BT = () => {
               </label>
               <input
                 id="email"
-                type="text"
+                type="email"
                 className="form-control email"
                 onChange={handleForm}
                 name="email"
