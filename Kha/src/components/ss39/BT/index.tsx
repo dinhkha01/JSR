@@ -25,9 +25,9 @@ const BT = () => {
   });
 
   const [showForm, setShowForm] = useState(true);
-  const [showBlock, setShowBlock] = useState(false);
+  const [showBlock, setShowBlock] = useState(true);
   const [showDelete, setShowDelete] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(true);
   const [userToBlock, setUserToBlock] = useState<number | null>(null);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
 
