@@ -128,10 +128,11 @@ const BT = () => {
   return (
     <div>
       <div>
+        <p className="text-7xl font-bold underline">Hello world!</p>
         <div className="w-[80%] m-auto mt-4 h-[100vh]">
           <main className="main">
             <header className="d-flex justify-content-between mb-3">
-              <h3>Nhân viên</h3>
+              <h3 className="">Nhân viên</h3>
               <button
                 className="btn btn-primary"
                 onClick={handleAddNewEmployee}
