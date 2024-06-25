@@ -5,43 +5,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Mid = () => {
   return (
     <div className="p-3">
-      <h3>Sales Information</h3>
+      <h3 className="mb-4">Sales Information</h3>
       <Row>
-        <Col xs={3} className="mb-3">
-          <Form.Label htmlFor="customer">Customer</Form.Label>
-          <Form.Control
-            type="text"
-            id="customer"
-            aria-describedby="customerHelpBlock"
-            placeholder="Enter Customer Name"
-          />
+        <Col sm={6} lg={3} className="mb-3">
+          <Form.Group controlId="customer">
+            <Form.Label>Customer</Form.Label>
+            <Form.Control type="text" placeholder="Enter Customer Name" />
+          </Form.Group>
         </Col>
-        <Col xs={3} className="mb-3">
-          <Form.Label htmlFor="invoiceId">Invoice ID</Form.Label>
-          <Form.Control
-            type="text"
-            id="invoiceId"
-            aria-describedby="invoiceIdHelpBlock"
-            placeholder="Enter Invoice ID"
-          />
+        <Col sm={6} lg={3} className="mb-3">
+          <Form.Group controlId="invoiceId">
+            <Form.Label>Invoice ID</Form.Label>
+            <Form.Control type="text" placeholder="Enter Invoice ID" />
+          </Form.Group>
         </Col>
-        <Col xs={3} className="mb-3">
-          <Form.Label htmlFor="startDate">Start Date</Form.Label>
-          <Form.Control
-            type="text"
-            id="startDate"
-            aria-describedby="startDateHelpBlock"
-            placeholder="Enter Start Date"
-          />
+        <Col sm={6} lg={3} className="mb-3">
+          <Form.Group controlId="startDate">
+            <Form.Label>Start Date</Form.Label>
+            <Form.Control type="date" placeholder="Enter Start Date" />
+          </Form.Group>
         </Col>
-        <Col xs={3} className="mb-3">
-          <Form.Label htmlFor="endDate">End Date</Form.Label>
-          <Form.Control
-            type="text"
-            id="endDate"
-            aria-describedby="endDateHelpBlock"
-            placeholder="Enter End Date"
-          />
+        <Col sm={6} lg={3} className="mb-3">
+          <Form.Group controlId="endDate">
+            <Form.Label>End Date</Form.Label>
+            <Form.Control type="date" placeholder="Enter End Date" />
+          </Form.Group>
         </Col>
       </Row>
     </div>

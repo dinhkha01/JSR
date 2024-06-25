@@ -1,34 +1,32 @@
 import React from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
-import { Apple } from "react-bootstrap-icons";
+import { Search as SearchIcon, Bell } from "react-bootstrap-icons";
 
 const Search = () => {
   return (
-    <div>
-      <Row className="align-items-center me-0">
-        <Col md={6}>
-          <InputGroup className="mb-2">
+    <div className="py-3">
+      <Row className="align-items-center">
+        <Col md={6} lg={8}>
+          <InputGroup>
             <InputGroup.Text>
-              <i className="fas fa-search"></i>
+              <SearchIcon />
             </InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className="mr-sm-4"
-            />
+            <Form.Control type="text" placeholder="Search" />
           </InputGroup>
         </Col>
-        <Col md={4}></Col>
-        <Col xs="auto">
-          <i className="fas fa-bell" style={{ fontSize: "24px" }}></i>
-        </Col>
-
-        <Col xs="auto">
-          <img
-            src="https://i.pinimg.com/474x/c9/8b/6d/c98b6d9017c0ba2461fcc4926caee22e.jpg"
-            alt="Profile"
-            style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-          />
+        <Col md={6} lg={4}>
+          <Row className="justify-content-end align-items-center">
+            <Col xs="auto">
+              <Bell size={24} className="me-4" />
+            </Col>
+            <Col xs="auto">
+              <img
+                src="https://i.pinimg.com/474x/c9/8b/6d/c98b6d9017c0ba2461fcc4926caee22e.jpg"
+                alt="Profile"
+                style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+              />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>
