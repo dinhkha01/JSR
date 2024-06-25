@@ -20,10 +20,12 @@ const Dashboard = () => {
         expand="lg"
         className="flex-column vh-100"
       >
-        <Navbar.Brand href="#home" className="text-primary mb-4">
-          Sales.
-        </Navbar.Brand>
-        <div className="d-flex flex-column justify-content-between h-100">
+        <Container className="p-0">
+          <Navbar.Brand href="#home" className="text-primary mb-4 ">
+            Sales.
+          </Navbar.Brand>
+        </Container>
+        <div className="d-flex flex-column  h-100 ">
           <Nav className="flex-column">
             <Nav.Link className="mb-2 d-flex align-items-center">
               <Grid3x3GapFill className="me-2" /> Dashboard
