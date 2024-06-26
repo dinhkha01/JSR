@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useMemo, useState } from "react";
 import "./index.css";
 import { data as initialData } from "./data";
 
@@ -31,6 +31,28 @@ const BT = () => {
   const [userToBlock, setUserToBlock] = useState<number | null>(null);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // phaan trang
+  const [size, setSize] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredData = useMemo(() => {
+    return data.filter(
+      (user) =>
+        user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [data, searchQuery]);
+  const totalPages = useMemo(() => {
+    return Math.ceil(filteredData.length / size);
+  }, [filteredData, size]);
+
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * size;
+    const end = start + size;
+    return filteredData.slice(start, end);
+  }, [filteredData, currentPage, size]);
+  ///////////////
 
   const handleAddNewEmployee = () => {
     setIsEditing(false);
@@ -115,20 +137,19 @@ const BT = () => {
   };
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+    setCurrentPage(1); // Reset về trang đầu tiên khi tìm kiếm
   };
 
   // Filter the data based on the search query
-  const filteredData = data.filter((user) =>
-    user.email.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+
   const rf = () => {
     setSearchQuery("");
+    setCurrentPage(1);
   };
 
   return (
     <div>
       <div>
-        <p className="text-7xl font-bold underline">Hello world!</p>
         <div className="w-[80%] m-auto mt-4 h-[100vh]">
           <main className="main">
             <header className="d-flex justify-content-between mb-3">
@@ -145,7 +166,7 @@ const BT = () => {
                 style={{ width: 350 }}
                 type="text"
                 className="form-control"
-                placeholder="Tìm kiếm theo email"
+                placeholder="Tìm kiếm theo email hoặc tên"
                 value={searchQuery}
                 onChange={handleSearch}
               />
@@ -169,7 +190,7 @@ const BT = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((user, index) => (
+                {paginatedData.map((user, index) => (
                   <tr key={user.id}>
                     <td>{index + 1}</td>
                     <td>{user.name}</td>
@@ -222,35 +243,54 @@ const BT = () => {
               </tbody>
             </table>
             <footer className="d-flex justify-content-end align-items-center gap-3">
-              <select className="form-select">
-                <option>Hiển thị 10 bản ghi trên trang</option>
-                <option>Hiển thị 20 bản ghi trên trang</option>
-                <option>Hiển thị 50 bản ghi trên trang</option>
-                <option>Hiển thị 100 bản ghi trên trang</option>
+              <select
+                className="form-select"
+                value={size}
+                onChange={(e) => setSize(+e.target.value)}
+              >
+                <option value={1}>Hiển thị 1 bản ghi trên trang</option>
+                <option value={2}>Hiển thị 2 bản ghi trên trang</option>
+                <option value={3}>Hiển thị 3 bản ghi trên trang</option>
+                <option value={4}>Hiển thị 4 bản ghi trên trang</option>
               </select>
               <ul className="pagination">
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a
+                    className={`page-link ${
+                      currentPage == 1 ? "disabled" : ""
+                    }`}
+                    href="#"
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                  >
                     Previous
                   </a>
                 </li>
+
+                {Array.from(new Array(totalPages), (_, index) => index + 1).map(
+                  (page, index) => (
+                    <li
+                      className={`page-item ${
+                        currentPage == page ? "active" : ""
+                      }`}
+                    >
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => setCurrentPage(page)}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  )
+                )}
                 <li className="page-item">
-                  <a className="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a
+                    className={`page-link ${
+                      currentPage == totalPages ? "disabled" : ""
+                    }`}
+                    href="#"
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                  >
                     Next
                   </a>
                 </li>
