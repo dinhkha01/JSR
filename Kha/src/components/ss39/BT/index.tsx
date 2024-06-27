@@ -33,7 +33,7 @@ const BT = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // phaan trang
-  const [size, setSize] = useState(1);
+  const [size, setSize] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredData = useMemo(() => {
@@ -45,13 +45,13 @@ const BT = () => {
   }, [data, searchQuery]);
   const totalPages = useMemo(() => {
     return Math.ceil(filteredData.length / size);
-  }, [filteredData, size]);
+  }, [searchQuery, size]);
 
   const paginatedData = useMemo(() => {
     const start = (currentPage - 1) * size;
     const end = start + size;
     return filteredData.slice(start, end);
-  }, [filteredData, currentPage, size]);
+  }, [searchQuery, currentPage, size]);
   ///////////////
 
   const handleAddNewEmployee = () => {
