@@ -19,7 +19,7 @@ const Search = ({ onSearch, onRestart }: SearchProps) => {
   return (
     <div className="py-3">
       <Row className="align-items-center">
-        <Col md={6} lg={7}>
+        <Col md={6} lg={6}>
           <InputGroup>
             <InputGroup.Text>
               <SearchIcon />
@@ -29,12 +29,12 @@ const Search = ({ onSearch, onRestart }: SearchProps) => {
               placeholder="Search"
               onChange={handleChange}
             />
+            <Button variant="outline-secondary" onClick={onRestart}>
+              <ArrowCounterclockwise />
+            </Button>
           </InputGroup>
-          <Button variant="outline-secondary" onClick={onRestart}>
-            <ArrowCounterclockwise />
-          </Button>
         </Col>
-        <Col md={6} lg={5}>
+        <Col md={6} lg={6}>
           <Row className="justify-content-end align-items-center">
             <Col xs="auto">
               <Bell size={24} />

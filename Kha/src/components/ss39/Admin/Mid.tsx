@@ -10,7 +10,7 @@ interface MidProps {
   isEditing: boolean;
 }
 
-const Mid = ({ car, setCar, onSubmit, isEditing }: MidProps) => {
+const Mid: React.FC<MidProps> = ({ car, setCar, onSubmit, isEditing }) => {
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCar((prevCar) => ({
@@ -78,9 +78,12 @@ const Mid = ({ car, setCar, onSubmit, isEditing }: MidProps) => {
             </Form.Group>
           </Col>
         </Row>
-        <Button type="submit" variant="primary">
-          {isEditing ? "Update" : "Add"}
-        </Button>
+        <div className="d-flex justify-end">
+          {" "}
+          <Button type="submit" variant="primary">
+            {isEditing ? "Update" : "Add"}
+          </Button>
+        </div>
       </Form>
     </div>
   );
