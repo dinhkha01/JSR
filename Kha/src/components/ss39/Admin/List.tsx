@@ -1,60 +1,15 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { DataItem } from "./data";
 
-const List = () => {
-  const data = [
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    {
-      invoiceId: "#AHGA68",
-      date: "23/09/2022",
-      customer: "Jacob Marcus",
-      payable: "$100",
-      paid: "$000",
-      due: "$000",
-    },
-    // ... (repeat this object 8 more times for a total of 9 rows)
-  ];
+type PropsType = {
+  data: DataItem[];
+  onDelete: (id: number | null) => void;
+  onEdit: (car: DataItem) => void;
+};
 
+const List = ({ data, onDelete, onEdit }: PropsType) => {
   const cellStyle = {
     padding: "12px 16px",
     border: "none",
@@ -79,31 +34,34 @@ const List = () => {
       >
         <thead>
           <tr>
-            <th style={headerStyle}>
-              <input type="checkbox" />
-            </th>
             <th style={headerStyle}>Invoice ID</th>
             <th style={headerStyle}>Date</th>
-            <th style={headerStyle}>Customer</th>
-            <th style={headerStyle}>Payable Amount</th>
-            <th style={headerStyle}>Paid Amount</th>
-            <th style={headerStyle}>Due</th>
+            <th style={headerStyle}>Name</th>
+            <th style={headerStyle}>Price</th>
+            <th style={headerStyle}>Color</th>
+            <th style={headerStyle}>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
-            <tr key={index}>
+          {data.map((car) => (
+            <tr key={car.Id}>
+              <td style={{ ...cellStyle, color: "#007bff" }}>{car.Id}</td>
+              <td style={cellStyle}>{car.date}</td>
+              <td style={cellStyle}>{car.Name}</td>
+              <td style={cellStyle}>{car.Price}</td>
+              <td style={cellStyle}>{car.Color}</td>
               <td style={cellStyle}>
-                <input type="checkbox" />
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => onDelete(car.Id)}
+                >
+                  Xoa
+                </Button>{" "}
+                <Button variant="primary" size="sm" onClick={() => onEdit(car)}>
+                  Sua
+                </Button>
               </td>
-              <td style={{ ...cellStyle, color: "#007bff" }}>
-                {row.invoiceId}
-              </td>
-              <td style={cellStyle}>{row.date}</td>
-              <td style={cellStyle}>{row.customer}</td>
-              <td style={cellStyle}>{row.payable}</td>
-              <td style={cellStyle}>{row.paid}</td>
-              <td style={cellStyle}>{row.due}</td>
             </tr>
           ))}
         </tbody>

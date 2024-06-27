@@ -1,37 +1,87 @@
-import React from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import React, { ChangeEvent, FormEvent, useEffect } from "react";
+import { Col, Form, Row, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { DataItem } from "./data";
 
-const Mid = () => {
+interface MidProps {
+  car: DataItem;
+  setCar: React.Dispatch<React.SetStateAction<DataItem>>;
+  onSubmit: (car: DataItem) => void;
+  isEditing: boolean;
+}
+
+const Mid = ({ car, setCar, onSubmit, isEditing }: MidProps) => {
+  const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setCar((prevCar) => ({
+      ...prevCar,
+      [name]: value,
+    }));
+  };
+
+  const handleForm = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit(car);
+  };
+
   return (
     <div className="p-3">
-      <h3 className="mb-4">Sales Information</h3>
-      <Row>
-        <Col sm={6} lg={3} className="mb-3">
-          <Form.Group controlId="customer">
-            <Form.Label>Customer</Form.Label>
-            <Form.Control type="text" placeholder="Enter Customer Name" />
-          </Form.Group>
-        </Col>
-        <Col sm={6} lg={3} className="mb-3">
-          <Form.Group controlId="invoiceId">
-            <Form.Label>Invoice ID</Form.Label>
-            <Form.Control type="text" placeholder="Enter Invoice ID" />
-          </Form.Group>
-        </Col>
-        <Col sm={6} lg={3} className="mb-3">
-          <Form.Group controlId="startDate">
-            <Form.Label>Start Date</Form.Label>
-            <Form.Control type="date" placeholder="Enter Start Date" />
-          </Form.Group>
-        </Col>
-        <Col sm={6} lg={3} className="mb-3">
-          <Form.Group controlId="endDate">
-            <Form.Label>End Date</Form.Label>
-            <Form.Control type="date" placeholder="Enter End Date" />
-          </Form.Group>
-        </Col>
-      </Row>
+      <h3 className="mb-4">{isEditing ? "Edit Car" : "Add New Car"}</h3>
+      <Form onSubmit={handleForm}>
+        <Row>
+          <Col sm={6} lg={3} className="mb-3">
+            <Form.Group controlId="Name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Name"
+                value={car.Name}
+                name="Name"
+                onChange={changeInput}
+              />
+            </Form.Group>
+          </Col>
+          <Col sm={6} lg={3} className="mb-3">
+            <Form.Group controlId="Color">
+              <Form.Label>Color</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Color"
+                value={car.Color}
+                name="Color"
+                onChange={changeInput}
+              />
+            </Form.Group>
+          </Col>
+          <Col sm={6} lg={3} className="mb-3">
+            <Form.Group controlId="Price">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter Price"
+                value={car.Price}
+                name="Price"
+                onChange={changeInput}
+              />
+            </Form.Group>
+          </Col>
+          <Col sm={6} lg={3} className="mb-3">
+            <Form.Group controlId="date">
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Date"
+                value={car.date}
+                name="date"
+                onChange={changeInput}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Button type="submit" variant="primary">
+          {isEditing ? "Update" : "Add"}
+        </Button>
+      </Form>
     </div>
   );
 };

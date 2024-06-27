@@ -1,8 +1,21 @@
 import React from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
-import { Search as SearchIcon, Bell } from "react-bootstrap-icons";
+import {
+  Search as SearchIcon,
+  Bell,
+  ArrowCounterclockwise,
+} from "react-bootstrap-icons";
 
-const Search = () => {
+interface SearchProps {
+  onSearch: (searchTerm: string) => void;
+  onRestart: () => void;
+}
+
+const Search = ({ onSearch, onRestart }: SearchProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <div className="py-3">
       <Row className="align-items-center">
@@ -11,8 +24,15 @@ const Search = () => {
             <InputGroup.Text>
               <SearchIcon />
             </InputGroup.Text>
-            <Form.Control type="text" placeholder="Search" />
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              onChange={handleChange}
+            />
           </InputGroup>
+          <Button variant="outline-secondary" onClick={onRestart}>
+            <ArrowCounterclockwise />
+          </Button>
         </Col>
         <Col md={6} lg={5}>
           <Row className="justify-content-end align-items-center">
