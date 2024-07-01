@@ -11,7 +11,6 @@ const AdminAll = () => {
         <Col xs={2}>
           <Dashboard />
         </Col>
-
         <Col xs={10}>
           <Router />
         </Col>
