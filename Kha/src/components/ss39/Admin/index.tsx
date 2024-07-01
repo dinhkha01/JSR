@@ -5,8 +5,9 @@ import Mid from "./Mid";
 import Search from "./Search";
 import List from "./List";
 import { DataItem, data as inData } from "./data";
+import Router from "../Router";
 
-function App() {
+function Admin() {
   const [data, setData] = useState(inData);
   const [editingCar, setEditingCar] = useState<DataItem | null>(null);
   const [currentCar, setCurrentCar] = useState<DataItem>({
@@ -60,9 +61,8 @@ function App() {
   return (
     <Container fluid>
       <Row>
-        <Col xs={2}>
-          <Dashboard />
-        </Col>
+        <Col xs={1}></Col>
+
         <Col xs={10}>
           <Search onSearch={handleSearch} onRestart={handleRestart} />
           <Mid
@@ -78,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default Admin;

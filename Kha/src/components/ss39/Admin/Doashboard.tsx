@@ -10,6 +10,7 @@ import {
   QuestionCircle,
   Bank,
 } from "react-bootstrap-icons";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -27,32 +28,53 @@ const Dashboard = () => {
         </Container>
         <div className="d-flex flex-column  h-100 ">
           <Nav className="flex-column">
-            <Nav.Link className="mb-2 d-flex align-items-center">
-              <Grid3x3GapFill className="me-2" /> Dashboard
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/admin"
+            >
               <Bank className="me-2" /> Lab Test
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/dashboard"
+            >
+              <Grid3x3GapFill className="me-2" /> Dashboard
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/appointment"
+            >
               <Calendar3 className="me-2" /> Appointment
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/medicineorder"
+            >
               <Capsule className="me-2" /> Medicine Order
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/message"
+            >
               <Envelope className="me-2" /> Message
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/payment"
+            >
               <Wallet2 className="me-2" /> Payment
-            </Nav.Link>
-            <Nav.Link className="mb-2 d-flex align-items-center">
+            </NavLink>
+            <NavLink
+              className="nav-link mb-2 d-flex align-items-center"
+              to="/settings"
+            >
               <Gear className="me-2" /> Settings
-            </Nav.Link>
+            </NavLink>
           </Nav>
           <Nav className="flex-column mt-auto">
-            <Nav.Link className="d-flex align-items-center">
+            <NavLink className="nav-link d-flex align-items-center" to="/help">
               <QuestionCircle className="me-2" /> Help
-            </Nav.Link>
+            </NavLink>
           </Nav>
         </div>
       </Navbar>
