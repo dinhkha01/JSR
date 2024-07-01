@@ -1,11 +1,10 @@
 import React, { useState, useMemo } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import Dashboard from "./Doashboard";
+
 import Mid from "./Mid";
 import Search from "./Search";
 import List from "./List";
 import { DataItem, data as inData } from "./data";
-import Router from "../Router";
 
 function Admin() {
   const [data, setData] = useState(inData);
