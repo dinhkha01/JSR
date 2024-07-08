@@ -1,0 +1,66 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(require("react"));
+const Bai2 = () => {
+    const listUser = [
+        {
+            id: 1,
+            name: "kha",
+            age: 21,
+        },
+        {
+            id: 2,
+            name: "ha",
+            age: 19,
+        },
+        {
+            id: 3,
+            name: "khai",
+            age: 18,
+        },
+        {
+            id: 4,
+            name: "kha0",
+            age: 11,
+        },
+        {
+            id: 5,
+            name: "khaa",
+            age: 18,
+        },
+    ];
+    const locUser = (0, react_1.useMemo)(() => {
+        return listUser.filter((user) => user.age > 18);
+    }, [listUser]);
+    return (<div>
+      <p>tren 18</p>
+      {locUser.map((user) => (<>
+          <p>{user.name}</p>
+          <p>{user.age}</p>
+        </>))}
+    </div>);
+};
+exports.default = Bai2;
