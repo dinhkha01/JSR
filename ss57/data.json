@@ -1,9 +1,82 @@
 {
+  "users": [
+    {
+      "email": "dinhkha2k3@gmail.com",
+      "password": "$2a$10$xBBT97D30KCTAVPWOrhzce9vBsVjUNe2B/xoEL1Bg6PyWUjwDz3PO",
+      "id": 1
+    },
+    {
+      "email": "dinhkha2k33@gmail.com",
+      "password": "$2a$10$A3xjx5umGuS.7quv1caPneLs3yWYcAdrj2cdMRkcN75FPyjT0GojS",
+      "id": 2
+    },
+    {
+      "email": "dinhkha2k323@gmail.com",
+      "password": "$2a$10$wnur.6vyiXHUcf22hcn2tezde5U0eqzyRX3pHfXpYPV33G6vQ8teK",
+      "id": 3
+    },
+    {
+      "email": "dinhkha@gmail.com",
+      "password": "$2a$10$fb08Kcp4sNCxI3G8W/.6Ju6GsB2R1NzSDOHf4NfZqCLBVFugf4RF2",
+      "id": 4
+    }
+  ],
+  "product": [
+    {
+      "id": "2",
+      "name": "hi",
+      "userId": 1
+    },
+    {
+      "id": "1",
+      "name": "hi"
+    },
+    {
+      "id": "5",
+      "name": "hi",
+      "price": "100000"
+    }
+  ],
   "products": [
-    { "id": "1", "name": "he", "price": "100000" },
-    { "id": "2", "name": "he", "price": "10000" },
-    { "id": "3", "name": "he", "price": "100000" },
-    { "id": "4", "name": "he", "price": "10000" },
-    { "id": "5", "name": "he", "price": "100000" }
+    {
+      "id": "1",
+      "name": "banh",
+      "img": "note",
+      "price": "100000",
+      "quantity": "10",
+      "created_at": "07/09/2024"
+    },
+    {
+      "id": "2",
+      "name": "nuoc",
+      "img": "note",
+      "price": "20000",
+      "quantity": "10",
+      "created_at": "07/09/2024"
+    },
+    {
+      "id": "4",
+      "name": "banh ngot",
+      "img": "note",
+      "price": "100000",
+      "quantity": "10",
+      "created_at": "07/09/2024"
+    },
+    {
+      "id": "5",
+      "name": "banh kem",
+      "img": "note",
+      "price": "100000",
+      "quantity": "10",
+      "created_at": "07/09/2024"
+    },
+    {
+      "id": "3",
+      "name": "banh keo",
+      "img": "note",
+      "price": "100000",
+      "quantity": "10",
+      "created_at": "07/09/2024"
+    }
   ]
 }
