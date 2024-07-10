@@ -28,8 +28,6 @@ const Bai5 = () => {
       {posts.map((post) => (
         <div key={post.id}>
           <p>ID: {post.id}</p>
-          <p>Title: {post.title}</p>
-          <p>Body: {post.body}</p>
         </div>
       ))}
       <button onClick={addPost}>Add post</button>

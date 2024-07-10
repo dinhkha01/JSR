@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { getAllpost, updatePost } from "./service";
+// import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Bai2 from "./components/Bai2";
-import Bai3 from "./components/Bai3";
-import Bai4 from "./components/Bai4";
-import Bai5 from "./components/Bai5";
-import Bai6 from "./components/Bai6";
+import Bai7 from "./components/bai8+9+11";
 
 function App() {
   return (
     <>
-      {/* <Bai2 /> */}
-      <Bai5 />
-      <Bai6 />
+      <Bai7 />
     </>
   );
 }

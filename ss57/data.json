@@ -328,5 +328,55 @@
       "body": "hooooo",
       "id": 1
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "cam",
+      "img": "https://i.pinimg.com/474x/36/97/9b/36979b04db6e115b1dba3911c0d4454c.jpg",
+      "price": "1000000",
+      "quantity": "10",
+      "date": "2024-07-10"
+    },
+    {
+      "id": 2,
+      "name": "đu đủ",
+      "img": "https://i.pinimg.com/474x/e5/1b/d4/e51bd45e255d936240563699151b103e.jpg",
+      "price": "1000000",
+      "quantity": "10",
+      "date": "2024-07-9"
+    },
+    {
+      "id": 3,
+      "name": "ổi",
+      "img": "https://i.pinimg.com/474x/a2/c6/99/a2c6995e67b57e4dc5c09851457b6c7f.jpg",
+      "price": "1000000",
+      "quantity": "10",
+      "date": "2024-07-10"
+    },
+    {
+      "id": 4,
+      "name": "táo",
+      "img": "https://i.pinimg.com/474x/d8/ee/5a/d8ee5aec20d221c8c3d2d19ac772739a.jpg",
+      "price": "1000000",
+      "quantity": "10",
+      "date": "2024-07-10"
+    },
+    {
+      "id": 5,
+      "name": "cóc",
+      "img": "https://i.pinimg.com/474x/86/97/31/8697319d4b8ed7d46954a8e3a38c8079.jpg",
+      "price": "1000000",
+      "quantity": "10",
+      "date": "2024-07-10"
+    },
+    {
+      "img": "https://i.pinimg.com/474x/6f/80/11/6f8011b47c23ca4b93d14a3c8b7eff0e.jpg",
+      "name": "ngon",
+      "price": "10000",
+      "quantity": "19",
+      "date": "2024-07-10",
+      "id": 6
+    }
   ]
 }

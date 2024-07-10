@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAllpost } from "../../service";
 export interface Post {
-  userId: number;
   id: number;
-  title: string;
-  body: string;
+  name: string;
+  img: string;
+  price: string;
+  quantity: string;
+  date: string;
 }
 const Bai2 = () => {
   const [data, setData] = useState<Post[]>([]);
@@ -12,13 +14,18 @@ const Bai2 = () => {
     getAllpost().then((data) => setData(data));
   });
   return (
-    <div>
+    <div className="d-flex">
       {data.map((data, index) => (
-        <>
-          <li key={index}>
-            id: {data.id} ||| {data.title}
+        <div>
+          <li key={index}>id: {data.id}</li>
+          <li>{data.name}</li>
+          <li>
+            {" "}
+            <img src={data.img} alt="" style={{ width: 100, height: 100 }} />
           </li>
-        </>
+          <li>{data.quantity}</li>
+          <li>{data.date}</li>
+        </div>
       ))}
     </div>
   );
