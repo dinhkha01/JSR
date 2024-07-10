@@ -116,7 +116,7 @@ const Bai7 = () => {
                       style={{ height: 80, width: 80 }}
                     />
                   </td>
-                  <td>{d.price.toLocaleString()} đ</td>
+                  <td>{d.price.toLocaleString()} $</td>
                   <td>{d.quantity}</td>
                   <td>{new Date(d.date).toLocaleDateString()}</td>
                   <td>
@@ -150,7 +150,7 @@ const Bai7 = () => {
               <Form.Control
                 type="text"
                 placeholder="Nhập tên sản phẩm"
-                value={newProduct.name || ""}
+                value={newProduct.name}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, name: e.target.value })
                 }
@@ -161,7 +161,7 @@ const Bai7 = () => {
               <Form.Control
                 type="text"
                 placeholder="Nhập URL hình ảnh"
-                value={newProduct.img || ""}
+                value={newProduct.img}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, img: e.target.value })
                 }
@@ -172,7 +172,7 @@ const Bai7 = () => {
               <Form.Control
                 type="number"
                 placeholder="Nhập giá sản phẩm"
-                value={newProduct.price || ""}
+                value={newProduct.price}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, price: e.target.value })
                 }
@@ -183,7 +183,7 @@ const Bai7 = () => {
               <Form.Control
                 type="number"
                 placeholder="Nhập số lượng"
-                value={newProduct.quantity || ""}
+                value={newProduct.quantity}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, quantity: e.target.value })
                 }
