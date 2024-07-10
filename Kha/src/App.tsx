@@ -3,11 +3,7 @@ import AdminAll from "./components/ss39/AdminAll";
 import { Delete } from "@mui/icons-material";
 
 function App() {
-  return (
-    <div>
-      <AdminAll />
-    </div>
-  );
+  return <div>helo</div>;
 }
 
 export default App;
