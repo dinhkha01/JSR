@@ -10,6 +10,7 @@ import {
   Table,
 } from "react-bootstrap";
 import { createNewGirl, deleteGirl, getAllGirl } from "../../service/ss58";
+
 export interface Girl {
   id: number;
   name: string;
@@ -19,20 +20,26 @@ export interface Girl {
   date: string;
   status: boolean;
 }
+
 const Ss58 = () => {
   const [girls, setGirls] = useState<Girl[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [showModalD, setShowModalD] = useState(false);
   const [girlToDelete, setGirlToDelete] = useState<number | null>(null);
   const [newProduct, setNewProduct] = useState<Partial<Girl>>({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentGirlId, setCurrentGirlId] = useState<number | null>(null);
+
   useEffect(() => {
     getGirl();
   }, []);
+
   const getGirl = () => {
     getAllGirl().then((data) => {
       setGirls(data);
     });
   };
+
   const dele = (id: number) => {
     const girlToUpdate = girls.find((girl) => girl.id === id);
     const updatedGirl = { ...girlToUpdate, status: false };
@@ -45,8 +52,9 @@ const Ss58 = () => {
     );
     setShowModalD(!showModalD);
   };
+
   const handleAddProduct = () => {
-    const newProductWithDate: Girl = {
+    const newProductWithDate = {
       ...newProduct,
       status: true,
       date: new Date().toISOString().split("T")[0],
@@ -56,6 +64,34 @@ const Ss58 = () => {
     setShowModal(false);
     setNewProduct({});
   };
+
+  const handleEditProduct = () => {
+    if (currentGirlId !== null) {
+      const updatedProduct = {
+        ...newProduct,
+      } as Girl;
+      deleteGirl(currentGirlId, updatedProduct);
+      setGirls((prevGirls) =>
+        prevGirls.map((girl) =>
+          girl.id === currentGirlId
+            ? { ...updatedProduct, id: currentGirlId }
+            : girl
+        )
+      );
+      setShowModal(false);
+      setNewProduct({});
+      setIsEditing(false);
+      setCurrentGirlId(null);
+    }
+  };
+
+  const handleEditClick = (girl: Girl) => {
+    setNewProduct(girl);
+    setIsEditing(true);
+    setCurrentGirlId(girl.id);
+    setShowModal(true);
+  };
+
   return (
     <div>
       <Container className="mt-5">
@@ -114,7 +150,11 @@ const Ss58 = () => {
                         >
                           <i className="bi bi-trash"></i> Xóa
                         </Button>
-                        <Button variant="outline-primary" size="sm">
+                        <Button
+                          variant="outline-primary"
+                          size="sm"
+                          onClick={() => handleEditClick(d)}
+                        >
                           <i className="bi bi-pencil"></i> Sửa
                         </Button>
                       </td>
@@ -124,6 +164,7 @@ const Ss58 = () => {
             </Table>
           </Card.Body>
         </Card>
+
         <Modal show={showModalD} onHide={() => setShowModalD(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Xóa Girl</Modal.Title>
@@ -150,7 +191,9 @@ const Ss58 = () => {
 
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Thêm sản phẩm mới</Modal.Title>
+            <Modal.Title>
+              {isEditing ? "Chỉnh sửa sản phẩm" : "Thêm sản phẩm mới"}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -159,7 +202,7 @@ const Ss58 = () => {
                 <Form.Control
                   type="text"
                   placeholder="Nhập tên sản phẩm"
-                  value={newProduct.name}
+                  value={newProduct.name || ""}
                   onChange={(e) =>
                     setNewProduct({ ...newProduct, name: e.target.value })
                   }
@@ -170,7 +213,7 @@ const Ss58 = () => {
                 <Form.Control
                   type="text"
                   placeholder="Nhập URL hình ảnh"
-                  value={newProduct.img}
+                  value={newProduct.img || ""}
                   onChange={(e) =>
                     setNewProduct({ ...newProduct, img: e.target.value })
                   }
@@ -181,7 +224,7 @@ const Ss58 = () => {
                 <Form.Control
                   type="number"
                   placeholder="Nhập giá sản phẩm"
-                  value={newProduct.price}
+                  value={newProduct.price || ""}
                   onChange={(e) =>
                     setNewProduct({ ...newProduct, price: e.target.value })
                   }
@@ -192,7 +235,7 @@ const Ss58 = () => {
                 <Form.Control
                   type="number"
                   placeholder="Nhập số lượng"
-                  value={newProduct.quantity}
+                  value={newProduct.quantity || ""}
                   onChange={(e) =>
                     setNewProduct({ ...newProduct, quantity: e.target.value })
                   }
@@ -204,8 +247,11 @@ const Ss58 = () => {
             <Button variant="secondary" onClick={() => setShowModal(false)}>
               Đóng
             </Button>
-            <Button variant="primary" onClick={handleAddProduct}>
-              Lưu sản phẩm
+            <Button
+              variant="primary"
+              onClick={isEditing ? handleEditProduct : handleAddProduct}
+            >
+              {isEditing ? "Cập nhật sản phẩm" : "Lưu sản phẩm"}
             </Button>
           </Modal.Footer>
         </Modal>
