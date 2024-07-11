@@ -26,36 +26,29 @@ const Bai7 = () => {
     });
   };
 
-  const fetchData = () => {
-    getAllpost().then((data) => {
-      setData(sortData(data, sortOrder));
-    });
+  const fetchData = async () => {
+    const fetchedData = await getAllpost();
+    setData(sortData(fetchedData, sortOrder));
   };
 
   useEffect(() => {
     fetchData();
   }, [sortOrder]);
 
-  const handleAddProduct = () => {
+  const handleAddProduct = async () => {
     const newProductWithDate = {
       ...newProduct,
       date: new Date().toISOString().split("T")[0],
     };
-    setData((prevData) =>
-      sortData([...prevData, newProductWithDate as Post], sortOrder)
-    );
-
-    createNewPost(newProductWithDate as Post).then(() => {
-      fetchData();
-      setShowModal(false);
-      setNewProduct({});
-    });
+    await createNewPost(newProductWithDate as Post);
+    fetchData();
+    setShowModal(false);
+    setNewProduct({});
   };
 
-  const handleDeleteProduct = (id: number) => {
-    Delete(id).then(() => {
-      fetchData();
-    });
+  const handleDeleteProduct = async (id: number) => {
+    await Delete(id);
+    fetchData();
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -116,7 +109,7 @@ const Bai7 = () => {
                       style={{ height: 80, width: 80 }}
                     />
                   </td>
-                  <td>{d.price.toLocaleString()} $</td>
+                  <td>{d.price} $</td>
                   <td>{d.quantity}</td>
                   <td>{new Date(d.date).toLocaleDateString()}</td>
                   <td>
@@ -150,7 +143,7 @@ const Bai7 = () => {
               <Form.Control
                 type="text"
                 placeholder="Nhập tên sản phẩm"
-                value={newProduct.name}
+                value={newProduct.name || ""}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, name: e.target.value })
                 }
@@ -161,7 +154,7 @@ const Bai7 = () => {
               <Form.Control
                 type="text"
                 placeholder="Nhập URL hình ảnh"
-                value={newProduct.img}
+                value={newProduct.img || ""}
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, img: e.target.value })
                 }
@@ -172,9 +165,12 @@ const Bai7 = () => {
               <Form.Control
                 type="number"
                 placeholder="Nhập giá sản phẩm"
-                value={newProduct.price}
+                value={newProduct.price || ""}
                 onChange={(e) =>
-                  setNewProduct({ ...newProduct, price: e.target.value })
+                  setNewProduct({
+                    ...newProduct,
+                    price: e.target.value,
+                  })
                 }
               />
             </Form.Group>
@@ -183,9 +179,12 @@ const Bai7 = () => {
               <Form.Control
                 type="number"
                 placeholder="Nhập số lượng"
-                value={newProduct.quantity}
+                value={newProduct.quantity || ""}
                 onChange={(e) =>
-                  setNewProduct({ ...newProduct, quantity: e.target.value })
+                  setNewProduct({
+                    ...newProduct,
+                    quantity: e.target.value,
+                  })
                 }
               />
             </Form.Group>

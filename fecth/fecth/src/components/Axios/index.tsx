@@ -19,13 +19,19 @@ const Axios = () => {
     //   setData([...data, d]);
     // });
     // DeleteId(12);
-    // editPosts(10, { name: "helo ", img: "xiu them" });
+    editPosts(
+      {
+        name: "helo ",
+        img: "https://i.pinimg.com/474x/38/ac/88/38ac88b7c98c74b5e97649fa022c564f.jpg",
+      },
+      1
+    );
   }, []);
 
   return (
     <div className="d-flex">
       {data.map((d, index) => (
-        <div>
+        <div key={index}>
           <p>{d.id}</p>
           <p>{d.name}</p>
           <img

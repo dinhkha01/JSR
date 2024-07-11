@@ -41,12 +41,14 @@ export const DeleteId = async (id: number) => {
   }
 };
 // sửa
-export const editPosts = async (id: number, newPost: {}) => {
+export const editPosts = async (newPost: {}, id: number) => {
   const res = await axios.put("http://localhost:9998/products/" + id, newPost, {
     headers: {
       "Content-Type": "application/json",
     },
   });
+  console.log(res);
+
   if (res.status == 200) {
     return res.data;
   } else {
