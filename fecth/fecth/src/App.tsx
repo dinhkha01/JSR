@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
-// import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import Bai2 from "./components/Bai2";
-import Bai7 from "./components/bai8+9+11";
-import Axios from "./components/Axios";
-import Phantrang from "./components/Axios/Phantrang";
-import Ss58 from "./components/Ss58";
+// import Bai1 from "./components/ss65_66/bai1";
+import Bai2 from "./components/ss65_66/Bai2";
+import Bai3 from "./components/ss65_66/Bai3";
+import Bai4 from "./components/ss65_66/Bai4";
+import Bai5 from "./components/ss65_66/Bai5";
+import Bai7 from "./components/ss65_66/Bai7";
 
 function App() {
   return (
     <>
-      {/* <Bai7 /> */}
-      {/* <Axios /> */}
-      {/* <Phantrang /> */}
-      <Ss58 />
+      <Bai7 />
     </>
   );
 }

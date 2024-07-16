@@ -7,9 +7,11 @@ import {
   Form,
   Modal,
   Row,
+  Spinner,
   Table,
 } from "react-bootstrap";
 import { createNewGirl, deleteGirl, getAllGirl } from "../../service/ss58";
+import Loading from "./Loading";
 
 export interface Girl {
   id: number;
@@ -29,14 +31,19 @@ const Ss58 = () => {
   const [newProduct, setNewProduct] = useState<Partial<Girl>>({});
   const [isEditing, setIsEditing] = useState(false);
   const [currentGirlId, setCurrentGirlId] = useState<number | null>(null);
+  const [isLoad, setIsLoad] = useState(false);
 
   useEffect(() => {
     getGirl();
   }, []);
 
   const getGirl = () => {
+    setIsLoad(true);
     getAllGirl().then((data) => {
-      setGirls(data);
+      setTimeout(() => {
+        setGirls(data);
+        setIsLoad(false);
+      }, 1000);
     });
   };
 
@@ -107,61 +114,64 @@ const Ss58 = () => {
                 </Button>
               </Col>
             </Row>
-
-            <Table striped bordered hover responsive>
-              <thead className="bg-light">
-                <tr>
-                  <th>#</th>
-                  <th>Tên</th>
-                  <th>Hình ảnh</th>
-                  <th>Giá</th>
-                  <th>Số lượng</th>
-                  <th>Ngày thêm</th>
-                  <th>Chức năng</th>
-                </tr>
-              </thead>
-              <tbody>
-                {girls
-                  .filter((girl) => girl.status == true)
-                  .map((d, index) => (
-                    <tr key={d.id}>
-                      <td>{index + 1}</td>
-                      <td>{d.name}</td>
-                      <td>
-                        <img
-                          src={d.img}
-                          alt=""
-                          className="img-thumbnail"
-                          style={{ height: 80, width: 80 }}
-                        />
-                      </td>
-                      <td>{d.price} $</td>
-                      <td>{d.quantity}</td>
-                      <td>{new Date(d.date).toLocaleDateString()}</td>
-                      <td>
-                        <Button
-                          variant="outline-danger"
-                          size="sm"
-                          className="me-2"
-                          onClick={() => {
-                            setGirlToDelete(d.id);
-                            setShowModalD(true);
-                          }}
-                        >
-                          <i className="bi bi-trash"></i> Xóa
-                        </Button>
-                        <Button
-                          variant="outline-primary"
-                          size="sm"
-                          onClick={() => handleEditClick(d)}
-                        >
-                          <i className="bi bi-pencil"></i> Sửa
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
+            {isLoad ? (
+              <Loading />
+            ) : (
+              <Table striped bordered hover responsive>
+                <thead className="bg-light">
+                  <tr>
+                    <th>#</th>
+                    <th>Tên</th>
+                    <th>Hình ảnh</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Ngày thêm</th>
+                    <th>Chức năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {girls
+                    .filter((girl) => girl.status == true)
+                    .map((d, index) => (
+                      <tr key={d.id}>
+                        <td>{index + 1}</td>
+                        <td>{d.name}</td>
+                        <td>
+                          <img
+                            src={d.img}
+                            alt=""
+                            className="img-thumbnail"
+                            style={{ height: 80, width: 80 }}
+                          />
+                        </td>
+                        <td>{d.price} $</td>
+                        <td>{d.quantity}</td>
+                        <td>{new Date(d.date).toLocaleDateString()}</td>
+                        <td>
+                          <Button
+                            variant="outline-danger"
+                            size="sm"
+                            className="me-2"
+                            onClick={() => {
+                              setGirlToDelete(d.id);
+                              setShowModalD(true);
+                            }}
+                          >
+                            <i className="bi bi-trash"></i> Xóa
+                          </Button>
+                          <Button
+                            variant="outline-primary"
+                            size="sm"
+                            onClick={() => handleEditClick(d)}
+                          >
+                            <i className="bi bi-pencil"></i> Sửa
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            )}
           </Card.Body>
         </Card>
 
