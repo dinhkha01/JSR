@@ -13,7 +13,7 @@ const Bai7 = () => {
   return (
     <div
       style={{
-        backgroundColor: switchColor ? "red" : "pink",
+        backgroundColor: switchColor ? "black" : "red",
       }}
     >
       <input type="checkbox" onChange={changeCheck} />
