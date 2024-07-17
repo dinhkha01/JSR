@@ -334,53 +334,47 @@
       "id": "1",
       "name": "cam",
       "img": "https://i.pinimg.com/474x/36/97/9b/36979b04db6e115b1dba3911c0d4454c.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
-      "status": true
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
+      "status": false
     },
     {
       "id": "2",
       "name": "đu đủ",
       "img": "https://i.pinimg.com/474x/e5/1b/d4/e51bd45e255d936240563699151b103e.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-9",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "3",
       "name": "ổi",
       "img": "https://i.pinimg.com/474x/a2/c6/99/a2c6995e67b57e4dc5c09851457b6c7f.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "4",
       "name": "táo",
       "img": "https://i.pinimg.com/474x/d8/ee/5a/d8ee5aec20d221c8c3d2d19ac772739a.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "5",
       "name": "cóc",
       "img": "https://i.pinimg.com/474x/86/97/31/8697319d4b8ed7d46954a8e3a38c8079.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "img": "https://i.pinimg.com/474x/17/17/36/171736b1ae19f89f47a229730bb9a6a9.jpg",
       "name": "ngon",
-      "price": "10000",
-      "quantity": "19",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "id": "6",
       "status": true
     },
@@ -388,53 +382,47 @@
       "id": "7",
       "name": "socola",
       "img": "https://i.pinimg.com/474x/b6/a4/5f/b6a45fe7dbf0d4a3092c47f200d74b85.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "8",
       "name": "dâu",
       "img": "https://i.pinimg.com/474x/88/c7/7e/88c77ee79c3a53deaa7e990d31673276.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-9",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "9",
       "name": "nhãn",
       "img": "https://i.pinimg.com/474x/dd/59/21/dd59212e42274f1430637ecc7107d1e4.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "10",
       "name": "dừa",
       "img": "https://i.pinimg.com/736x/5f/5a/af/5f5aaf6ef33d92fa59b6879391ab2ce4.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "id": "11",
       "name": "dưa",
       "img": "https://i.pinimg.com/474x/32/ae/34/32ae349d18e839ba77b126224681f836.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "img": "https://i.pinimg.com/474x/01/d7/0d/01d70defe71cd75e457e49e699b30319.jpg",
       "name": "quất",
-      "price": "10000",
-      "quantity": "19",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "id": "12",
       "status": true
     },
@@ -442,17 +430,15 @@
       "id": "13",
       "name": "kẹo",
       "img": "https://i.pinimg.com/474x/97/64/87/97648780908f6b9b0333d9fc168faa04.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "img": "https://i.pinimg.com/474x/4f/48/fc/4f48fcc91d5a0bb3e62c6b2a7c109613.jpg",
       "name": "bánh",
-      "price": "10000",
-      "quantity": "19",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "id": "14",
       "status": true
     },
@@ -460,17 +446,15 @@
       "id": "15",
       "name": "ú",
       "img": "https://i.pinimg.com/474x/76/60/30/7660303e016dbbeec5c90fce3e8650d6.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "img": "https://i.pinimg.com/474x/39/10/dd/3910dd78e47ffac5e1809982d48409b9.jpg",
       "name": "ngọt",
-      "price": "10000",
-      "quantity": "19",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "id": "16",
       "status": true
     },
@@ -478,121 +462,25 @@
       "id": "17",
       "name": "bưởi",
       "img": "https://i.pinimg.com/474x/1c/4a/58/1c4a58cd5d8a1a5dd766e7c0d9f9ee50.jpg",
-      "price": "1000000",
-      "quantity": "10",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "status": true
     },
     {
       "img": "https://i.pinimg.com/474x/b5/a6/3e/b5a63e3fe5cf16958c8334563ac0de41.jpg",
       "name": "măng",
-      "price": "10000",
-      "quantity": "19",
-      "date": "2024-07-10",
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
       "id": "18",
       "status": true
-    },
-    {
-      "id": "b1be",
-      "name": "a",
-      "date": "2024-07-11"
-    },
-    {
-      "id": "785d",
-      "name": "a",
-      "date": "2024-07-11"
-    },
-    {
-      "id": "5ba4",
-      "name": "a",
-      "img": "a",
-      "price": "12",
-      "quantity": "12",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "9654",
-      "name": "a",
-      "img": "a",
-      "price": "123",
-      "quantity": "123",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "a8e3",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "eb0a",
-      "name": "a",
-      "img": "a",
-      "price": "1",
-      "quantity": "1",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "cce2",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "6944",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "46db",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "7eee",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "7cec",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "a22b",
-      "name": "a",
-      "img": "a",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "dc24",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "3e08",
-      "status": false,
-      "date": "2024-07-11"
-    },
-    {
-      "id": "0d0b",
-      "name": "aa",
-      "img": "a",
-      "price": "1",
-      "quantity": "1",
-      "status": false,
-      "date": "2024-07-11"
     },
     {
       "id": "d5be",
       "name": "Bún riêu",
       "img": "https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/450478111_882138643957451_7496380123255779506_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=1QlgUWzZ9boQ7kNvgF7_Ibv&_nc_ht=scontent.fsgn2-10.fna&oh=00_AYDE81cFn4BON97IB-LJd9TRrewUaZnlvHs3B5chMQuLZw&oe=669677B1",
-      "price": "1122222",
-      "quantity": "12",
-      "status": true,
-      "date": "2024-07-12"
+      "datem": "2024-07-07",
+      "datet": "2024-07-10",
+      "status": true
     }
   ]
 }
