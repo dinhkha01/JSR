@@ -6,8 +6,6 @@ import { StoreInterface } from "../../Store";
 const Bai1 = () => {
   const sv = useSelector((state: StoreInterface) => state.userStore);
 
-  console.log(sv);
-
   return (
     <div>
       {sv && (
