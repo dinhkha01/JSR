@@ -8,7 +8,6 @@ export interface Product {
   datem: string;
   datet: string;
   status: boolean;
-  // Add other product properties as needed
 }
 export interface ProductsState {
   items: Product[];
@@ -58,7 +57,7 @@ export const editProduct: any = createAsyncThunk(
   }
 );
 
-export const productsSlice = createSlice({
+export const { reducer, actions } = createSlice({
   name: "products",
   initialState: { items: [] } as ProductsState,
   reducers: {},
@@ -92,6 +91,3 @@ export const productsSlice = createSlice({
     });
   },
 });
-
-export const productsReducer = productsSlice.reducer;
-export const productsActions = productsSlice.actions;

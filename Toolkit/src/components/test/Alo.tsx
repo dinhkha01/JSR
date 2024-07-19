@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import {
   deleteProuct,
   getProducts,
@@ -8,7 +8,7 @@ import {
   switchStatus,
   addProduct,
   editProduct,
-} from "./test";
+} from "../../redux/store/reducers";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
 
 const Alo = () => {
@@ -33,12 +33,8 @@ const Alo = () => {
     dispatch(deleteProuct(id));
   };
 
-  const handleStatusChange = (
-    id: number,
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const newStatus = event.target.value === "true";
-    dispatch(switchStatus({ id, status: newStatus }));
+  const handleStatusChange = (id: number, status: boolean) => {
+    dispatch(switchStatus({ id, status: status }));
   };
 
   const handleEditClick = (product: Product) => {
@@ -121,7 +117,7 @@ const Alo = () => {
                 <td>
                   <Form.Select
                     value={d.status ? "true" : "false"}
-                    onChange={(e) => handleStatusChange(d.id, e)}
+                    onChange={(e) => handleStatusChange(d.id, !d.status)}
                     className={
                       d.status
                         ? "bg-success text-white"

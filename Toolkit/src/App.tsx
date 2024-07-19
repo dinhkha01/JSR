@@ -1,5 +1,5 @@
 // import "./App.css";
-import Alo from "./components/Alo";
+import Alo from "./components/test/Alo";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
