@@ -27,7 +27,7 @@ const Alo = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, [dispatch]);
+  }, []);
 
   const dele = (id: number) => {
     dispatch(deleteProuct(id));
