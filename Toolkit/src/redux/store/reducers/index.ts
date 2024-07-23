@@ -1,22 +1,13 @@
+// import { reducer } from './index';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Product, ProductsState } from "../../../components/interface/inter";
 
-export interface Product {
-  id: number;
-  name: string;
-  img: string;
-  datem: string;
-  datet: string;
-  status: boolean;
-}
-export interface ProductsState {
-  items: Product[];
-}
 export const getProducts: any = createAsyncThunk(
   "products/getProducts",
   async () => {
-    const { data } = await axios.get("http://localhost:9998/products");
-    return data;
+    const res = await axios.get("http://localhost:9998/products");
+    return res.data;
   }
 );
 
@@ -30,36 +21,33 @@ export const deleteProuct: any = createAsyncThunk(
 export const switchStatus: any = createAsyncThunk(
   "products/switchStatus",
   async ({ id, status }: { id: number; status: boolean }) => {
-    const { data } = await axios.patch(`http://localhost:9998/products/${id}`, {
+    const res = await axios.patch(`http://localhost:9998/products/${id}`, {
       status,
     });
-    return data;
+    return res.data;
   }
 );
 export const addProduct: any = createAsyncThunk(
   "products/addProduct",
   async (product: Product) => {
-    const { data } = await axios.post(
-      "http://localhost:9998/products",
-      product
-    );
-    return data;
+    const res = await axios.post("http://localhost:9998/products", product);
+    return res.data;
   }
 );
 export const editProduct: any = createAsyncThunk(
   "products/editProduct",
   async (product: Product) => {
-    const { data } = await axios.put(
+    const res = await axios.put(
       `http://localhost:9998/products/${product.id}`,
       product
     );
-    return data;
+    return res.data;
   }
 );
 
-export const { reducer, actions } = createSlice({
+export const hi = createSlice({
   name: "products",
-  initialState: { items: [] } as ProductsState,
+  initialState: { items: [] as Product[], isloading: false, error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProducts.fulfilled, (state, action) => {
@@ -91,3 +79,5 @@ export const { reducer, actions } = createSlice({
     });
   },
 });
+
+export const { reducer } = hi;

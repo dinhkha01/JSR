@@ -4,12 +4,12 @@ import { AppDispatch, RootState } from "../../redux/store";
 import {
   deleteProuct,
   getProducts,
-  Product,
   switchStatus,
   addProduct,
   editProduct,
 } from "../../redux/store/reducers";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
+import { Product } from "../interface/inter";
 
 const Alo = () => {
   const dispatch = useDispatch<AppDispatch>();
